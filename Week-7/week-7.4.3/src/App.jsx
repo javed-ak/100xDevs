@@ -2,6 +2,7 @@ import { RecoilRoot, useRecoilValue } from 'recoil'
 import { todosAtomFamily } from './atoms'
 
 function App() {
+  
   return <RecoilRoot>
     <Todo id={1} />
     <Todo id={2} />
