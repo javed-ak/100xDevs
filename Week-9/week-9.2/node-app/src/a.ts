@@ -9,11 +9,11 @@
 // greet("javed")
 
 
-// function add(a: number, b: number): number {
+// function sum(a: number, b: number): number {
 //     return a + b;
 // }
 
-// const value = add(9, 5)
+// const value = sum(9, 5)
 // console.log(value)
 
 
@@ -24,9 +24,9 @@
 // isLegal(18)
 
 
-function printSomthing(fn: () => void): void {
+function printSomthing(fn: () => void): void { //this is the main function
     setInterval(fn, 1000) 
 }
-printSomthing(function() {
+printSomthing(function() { //this is the function
     console.log("Hello Javed")
 })
