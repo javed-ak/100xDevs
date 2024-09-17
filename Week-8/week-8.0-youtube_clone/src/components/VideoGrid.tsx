@@ -118,12 +118,12 @@ export const VideoGrid = () => {
     return <div className="grid grid-cols-1 md:grid-cols-2 lg lg:grid-cols-4 ">
         {VIDEOS.map(video => <div>
             <VideoCard
-            thumbnail = {video.thumbnail}
-            title = {video.title}
-            authImg = {video.authImg} 
-            author = {video.author}
-            views = {video.views}
-            timestamp = {video.timestamp}>
+                thumbnail={video.thumbnail}
+                title={video.title}
+                authImg={video.authImg}
+                author={video.author}
+                views={video.views}
+                timestamp={video.timestamp}>
             </VideoCard>
         </div>)}
     </div>
