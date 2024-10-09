@@ -20,8 +20,8 @@ const ALL_USERS = [{
 }];
 
 const userExist = (username, password) => {
-    // ALL_USERS.filter((username, password) => {
-    //     if(username == email && password == password) {
+    // ALL_USERS.filter(value) => {
+    //     if(value.username == email && value.password == password) {
     //         return true
     //     } else {
     //         return false
