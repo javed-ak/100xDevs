@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<body>
+    <!-- <input type="text" name="title" id="title" placeholder="Title"><br><br>
+    <input type="description" name="description" id="description" placeholder="Description"><br><br>
+    <button onclick="addTodo()">Add Todo</button><br><br> -->
+    <div id="container"></div>
+
+    <script>
+        const updateTodos = (state) => {
+            const parent = document.getElementById("container");
+            parent.innerHTML = "";
+            
+            for (let i = 0; i < state.length; i++) {
+                const child = createChild(state[i].title, state[i].description, state[i].id);
+                parent.appendChild(child);
+            }
+        }
+
+        const createChild = (title, description, id) => {
+            const child = document.createElement("div");
+
+            const firstGrandChild = document.createElement("div");
+            firstGrandChild.innerHTML = title;
+            
+            const secondGrandChild = document.createElement("div");
+            secondGrandChild.innerHTML = description;
+
+            const thirdGrandChild = document.createElement("button");
+            thirdGrandChild.innerHTML = "Mark as done!";
+            thirdGrandChild.setAttribute("onclick", `markAsDone(${id})`);
+
+            child.appendChild(firstGrandChild);
+            child.appendChild(secondGrandChild);
+            child.appendChild(thirdGrandChild);
+            child.setAttribute("id", id);
+
+            return child;
+        }
+
+        const markAsDone = (todoId) => {
+            const parent = document.getElementById(todoId);
+            parent.children[2].innerHTML = "Done!";
+        }
+        
+        window.setInterval( async () => {
+            const response = await fetch("http://localhost:3000/todos");
+            const todosList = await response.json();
+
+            updateTodos(todosList.todos);
+            console.log("I am done")
+        }, 5000) 
+    </script>
+</body>
+</html>
