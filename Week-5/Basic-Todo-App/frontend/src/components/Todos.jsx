@@ -7,7 +7,7 @@ export function Todos({todos}) {
         {todos.map(function(todo) {
             return <>
                 <div key = {todo.id}>
-                <h1>{todo.title}</h1>
+                <h2>{todo.title}</h2>
                 <p>{todo.description}</p>
                 <button onClick={() => {
                     axios.put(`http://localhost:3000/todo/${todo.id}`, {

@@ -16,18 +16,28 @@ export const CreateTodo = () => {
     }}/>
     <button onClick={() => {
             // axios
-            axios.post("http://localhost:3000/todo", {
-                title: title,
-                description: description
-            }, {
+            // axios.post("http://localhost:3000/todo", {
+            //     title: title,
+            //     description: description
+            // }, {
+            //     headers: {
+            //         "Content-type": "application/json"
+            //     }
+            // })
+            fetch("http://localhost:3000/todo", {
+                method: "POST",
+                body: JSON.stringify({
+                    title: title,
+                    description: description
+                }),
                 headers: {
                     "Content-type": "application/json"
                 }
             })
-                .then(async function(res) {
-                    const json = await res.json();
-                    alert("Todo added");
-                })
+            .then(async function(res) {
+                const json = await res.json();
+                alert("Todo added");
+            })
         }}>Create Todo</button>
     </>
 }

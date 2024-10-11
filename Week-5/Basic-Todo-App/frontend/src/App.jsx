@@ -11,7 +11,7 @@ function App() {
       .then((response) => {
         setTodos(response.data.todos)
       })
-  }, [todos])
+  }, [Todos])
 
   return <>
   <h1 style={{display: "flex", justifyContent: "center"}}>ToDo's</h1>
