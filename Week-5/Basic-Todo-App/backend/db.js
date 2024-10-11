@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { boolean } = require('zod');
 
 mongoose.connect('mongodb+srv://admin:adminkapassword@cluster0.yojdofd.mongodb.net/todos')
 
