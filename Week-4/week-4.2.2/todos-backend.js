@@ -45,4 +45,15 @@ app.get("/todos", (req, res) => {
     })
 })
 
+app.get("/todo", (req, res) => {
+    const id = req.query.id;
+    const todo = todos.find((todo) => todo.id === parseInt(id));
+  
+    if (todo) {
+      res.json(todo);
+    } else {
+      res.status(404).json({ message: "Todo not found" });
+    }
+  });
+  
 app.listen(3000);

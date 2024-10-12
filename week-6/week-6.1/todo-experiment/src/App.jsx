@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     fetchTodos();
-    const intervalId = setInterval(fetchTodos, 5000);
+    setInterval(fetchTodos, 5000);
   }, []);
 
   const Todo = function Todo(props) {
