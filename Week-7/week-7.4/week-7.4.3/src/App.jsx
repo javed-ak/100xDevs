@@ -1,5 +1,5 @@
 import { RecoilRoot, useRecoilValue } from 'recoil'
-import { todosAtomFamily } from './atoms'
+import { todosAtomFamily } from './component/atom/atoms'
 
 function App() {
   
@@ -15,7 +15,6 @@ function Todo({id}) {
   return <> 
   <h3>{currentTodo.title}</h3>
   <h5>{currentTodo.description}</h5>
-  <br />
   </>
 }
 export default App

@@ -7,3 +7,9 @@ export const TODOS = [{
     title: "Eat Food",
     description: "Its time to eat food"
 }]
+
+// export const TODOS = async () => {
+//     const response = await fetch("http://localhost:3000/todos/");
+//     const todos = await response.json();
+//     return todos;
+// };

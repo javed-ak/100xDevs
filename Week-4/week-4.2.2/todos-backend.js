@@ -55,5 +55,19 @@ app.get("/todo", (req, res) => {
       res.status(404).json({ message: "Todo not found" });
     }
   });
+
+function getRandomNumber(max) {
+    return Math.floor(Math.random() * max);
+}
+  
+app.get("/notifications", (req, res) => {
+    res.json({
+      network: getRandomNumber(200),
+      jobs: getRandomNumber(200),
+      messaging: getRandomNumber(200),
+      notifications: getRandomNumber(200)
+    })
+  
+})
   
 app.listen(3000);

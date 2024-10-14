@@ -1,6 +1,7 @@
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { countAtom } from "./store/atom/count";
 import { evenSelector } from "./store/selector/selector";
+import { todosAtom } from "./store/atom/todos";
 
 function App() {
 
@@ -8,6 +9,8 @@ function App() {
     <>
     <RecoilRoot>
       <Count />
+      <FilterBox />
+      <Todos />
     </RecoilRoot>
     </>
   )
@@ -23,11 +26,11 @@ function Count() {
 
 function CountRendered() {
   const count = useRecoilValue(countAtom);
-
   return <>
     {count}
   </>
 }
+
 function Button() {
   const setCount = useSetRecoilState(countAtom);
 
@@ -46,6 +49,21 @@ function CheckNumber() {
   // }
   return <div>
     {isEven ? null : "Number is Even"}
+  </div>
+}
+
+function FilterBox() {
+  return <div>
+    <input type="text" name="" id="" placeholder="Find your Todo" />
+  </div>
+}
+
+function Todos() {
+  const todos = useRecoilValue(todosAtom)
+  return <div>
+    {todos.map((todo) => title = {title}, description = {description})}
+    <h2>{title}</h2>
+    <h5>{description}</h5>
   </div>
 }
 export default App

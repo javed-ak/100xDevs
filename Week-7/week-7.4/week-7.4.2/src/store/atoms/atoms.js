@@ -6,7 +6,7 @@ export const notificationsSet = atom({
     default: selector({
         key: "notificationsSetSelector",
         get: async () => {
-            const res = await axios.get("http://localhost:8080/notifications")
+            const res = await axios.get("http://localhost:3000/notifications")
             return res.data
         }
     })
