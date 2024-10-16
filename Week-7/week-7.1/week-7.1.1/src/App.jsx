@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      kuch smjhi
         <Header />
         <Suspense fallback={"Loading..."}>
           <Routes>

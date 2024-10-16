@@ -1,17 +1,44 @@
+// import { set } from 'mongoose';
 // import React, { useState, useEffect } from 'react';
 
 // function App() {
+//   const [render, setRender] = useState(true);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setRender(value => !value);
+//       clearInterval(interval)
+//     }, 1000);
+//   }, [render])
+
 //   return <>
-//   <MyComponent />
+//   <MyCount />
+//   {render ? <MyComponent /> : <p style={{display:'flex', justifyContent:'center'}}>UnMounted</p>}
+  
 //   </>
 // }
 
-// function MyComponent() {
+// function MyCount() {
 //   const [count, setCount] = useState(0);
 
-//   const incrementCount = () => {
-//     setCount(count + 1);
-//   };
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCount(count + 1);
+//       clearInterval(interval)
+//     }, 1000);
+//   }, [count]);
+
+//   return <div>
+//      <p style={{display:'flex', justifyContent:'center'}}>{count}</p>
+//   </div>
+
+// }
+  // function MyComponent() {
+  //   const [count, setCount] = useState(0);
+
+  //   const incrementCount = () => {
+  //     setCount(count + 1);
+  //   };
 
 //   return (
 //     <div>
@@ -21,7 +48,8 @@
 //   );
 // }
 
-// function MyComponent() {
+// const MyComponent = () => {
+  
 //   useEffect(() => {
 //     // Perform setup or data fetching here
 //     console.log("mount component")
@@ -32,29 +60,37 @@
 //     };
 //   }, []);
 
+//   return (
+//         <div>
+//           <p style={{display:'flex', justifyContent:'center'}}>Component Mounted</p>
+//         </div>
+//       );
 //   // Render UI
 // }
 
-
+// export default App
 
 // ----------------------- useTodos ---------------------------->>
 
 
 
-// import { useEffect, useState } from 'react'
-// import axios from 'axios'
+// 
+// 
 
 // function useTodos() {
 //   const [todos, setTodos] = useState([])
 //   const [loading, setLoading] = useState(true)
 
 //   useEffect(() => {
-//     axios.get("http://localhost:3000/todos/")
-//     .then(res => {
-//       setTodos(res.data.todos)
-//       setLoading(false)
-//     })
-//   }, [])
+//     const interval = setInterval(() => { 
+//       axios.get("http://localhost:3000/todos/")
+//       .then(res => {
+//         setTodos(res.data.todos)
+//         setLoading(false)
+//       })
+//       clearInterval(interval)
+//       }, 2000);
+//   }, [todos, loading])
 //   return {todos, loading};
 // }
 
@@ -67,7 +103,7 @@
 
 //   return (
 //     <>
-//       {todos.map(todo => <Track todo={todo} />)}
+//       {todos.map(todo => <Track key={todo.id} todo={todo} />)}
 //     </>
 //   )
 // }
@@ -84,69 +120,20 @@
 
 
 
-
-// ------------------ useMousePointer --------------------->>
-
-
-// import { useEffect, useState } from 'react'
-
-// const useMousePointer = () => {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-//   const handleMouseMove = (e) => {
-//     setPosition({ x: e.clientX, y: e.clientY });
-//   };
-
-//   useEffect(() => {
-//     window.addEventListener('mousemove', handleMouseMove);
-//     return () => {
-//       window.removeEventListener('mousemove', handleMouseMove);
-//     };
-//   }, []);
-
-//   return position;
-// };
-
-// function App() {
-//   const mousePointer = useMousePointer();
-
-//   return (
-//     <>
-//       Your mouse position is {mousePointer.x} {mousePointer.y}
-//     </>
-//   )
-// }
-
-// export default App
-
-
-
-
 // ------------------------- useInterval ----------------------------->>
 
 
 // import { useEffect, useState } from "react";
 
-// function useInterval(fn, timeout) {
-//   useEffect(() => {
-//     const intervalId = setInterval(() => {
-//       fn();
-//     }, timeout);
-
-//     // Cleanup the interval on component unmount
-//     return () => clearInterval(intervalId);
-//   }, [fn, timeout]); // Ensure the effect reruns if fn or timeout changes
-// }
+// 
 
 // function App() {
-//   const [count, setCount] = useState(0);
+//   
 
-//   useInterval(() => {
-//     setCount(prevCount => prevCount + 1); // Use functional update to ensure you get the latest state
-//   }, 1000);
+//   
 
 //   return <>
-//     <div>The count is {count}</div>
+//     
 //   </>;
 // }
 
@@ -155,35 +142,60 @@
 
 // ------------------------- useDebounce --------------------------------->>
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-const useDebounce = (value, delay) => {
-  // State to store the debounced value
-  const [debouncedValue, setDebouncedValue] = useState(value);
+// const useDebounce = (value, delay) => {
+//   // State to store the debounced value
+//   const [debouncedValue, setDebouncedValue] = useState(value);
 
-  useEffect(() => {
-    // Set up a timer to update the debounced value after the specified delay
-    const timerId = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
+//   useEffect(() => {
+//     // Set up a timer to update the debounced value after the specified delay
+//     const timerId = setTimeout(() => {
+//       setDebouncedValue(value);
+//     }, delay);
 
-    // Clean up the timer if the value changes before the delay has passed
-    return () => clearTimeout(timerId);
-  }, [value, delay]);
+//     // Clean up the timer if the value changes before the delay has passed
+//     return () => clearTimeout(timerId);
+//   }, [value, delay]);
 
-  return debouncedValue;
-};
+//   return debouncedValue;
+// };
+
+// function App() {
+//   const[value, setValue] = useState("")
+//   const debouncedValue = useDebounce(value, 500)
+
+
+//   return <>
+//   <input type="text" placeholder='write somthing here..' onChange={(e) => {
+//      setValue(e.target.value)
+//   }} />
+//   <h1>{debouncedValue}</h1>
+//   </>
+// }
+
+// export default App
+
+// ------------------------------ useIsOnline ----------------------------->>
+import { useState } from 'react';
+
+import { ConnectionAlert } from "./components/ConnectionAlert";
+import { useIsOnline } from "./Hooks/UseIsOnline";
+import { useMousePointer } from "./Hooks/useMousePointer";
+import { useInterval } from './Hooks/useInterval';
+import { Counter } from './components/Counter';
+import { MousePointer } from './components/MousePointer';
 
 function App() {
-  const[value, setValue] = useState("")
-  const debouncedValue = useDebounce(value, 500)
+  const browserStatus = useIsOnline();
+  
 
-
-  return <>
-  <input type="text" placeholder='write somthing here..' onChange={(e) => {
-     setValue(e.target.value)
-  }} />
-  <h1>{debouncedValue}</h1>
+  return<>
+  <div style={{display:'flex', gap:"10px"}}>
+    {!browserStatus ? <ConnectionAlert /> : null}
+    <MousePointer />
+    <Counter />
+  </div>
   </>
 }
 
