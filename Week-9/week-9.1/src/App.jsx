@@ -119,72 +119,17 @@
 // export default App
 
 
-
-// ------------------------- useInterval ----------------------------->>
-
-
-// import { useEffect, useState } from "react";
-
-// 
-
-// function App() {
-//   
-
-//   
-
-//   return <>
-//     
-//   </>;
-// }
-
-// export default App;
-
-
 // ------------------------- useDebounce --------------------------------->>
 
-// import { useState, useEffect } from 'react';
 
-// const useDebounce = (value, delay) => {
-//   // State to store the debounced value
-//   const [debouncedValue, setDebouncedValue] = useState(value);
-
-//   useEffect(() => {
-//     // Set up a timer to update the debounced value after the specified delay
-//     const timerId = setTimeout(() => {
-//       setDebouncedValue(value);
-//     }, delay);
-
-//     // Clean up the timer if the value changes before the delay has passed
-//     return () => clearTimeout(timerId);
-//   }, [value, delay]);
-
-//   return debouncedValue;
-// };
-
-// function App() {
-//   const[value, setValue] = useState("")
-//   const debouncedValue = useDebounce(value, 500)
-
-
-//   return <>
-//   <input type="text" placeholder='write somthing here..' onChange={(e) => {
-//      setValue(e.target.value)
-//   }} />
-//   <h1>{debouncedValue}</h1>
-//   </>
-// }
-
-// export default App
 
 // ------------------------------ useIsOnline ----------------------------->>
-import { useState } from 'react';
 
 import { ConnectionAlert } from "./components/ConnectionAlert";
 import { useIsOnline } from "./Hooks/UseIsOnline";
-import { useMousePointer } from "./Hooks/useMousePointer";
-import { useInterval } from './Hooks/useInterval';
 import { Counter } from './components/Counter';
 import { MousePointer } from './components/MousePointer';
+import { Debounced } from "./components/Debounce";
 
 function App() {
   const browserStatus = useIsOnline();
@@ -195,6 +140,7 @@ function App() {
     {!browserStatus ? <ConnectionAlert /> : null}
     <MousePointer />
     <Counter />
+    <Debounced />
   </div>
   </>
 }
