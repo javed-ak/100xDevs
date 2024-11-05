@@ -1,14 +1,16 @@
 import axios from "axios"
 
 async function fetchData () {
-    const response = await axios.get("https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details")
+    const response = await axios.get("http://localhost:3000/api/user")
     return response.data
 }
 
 export default async function page() {
     const data = await fetchData()
-    return <div className="p-8 border">
-        <div>Name: {data.name}</div>
+    return <div className="h-screen flex justify-center items-center">
+        <div className="p-8 border shadow-lg rounded-lg">
+        <div className="font-bold text-lg">Name: {data.name}</div>
         <div>{data.email}</div>
+    </div>
     </div>
 }
