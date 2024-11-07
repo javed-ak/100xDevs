@@ -3,15 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 const client = new PrismaClient;
 
-export async function GET() {
-    const user = await client.user.findFirst();
+// export async function GET() {
+//     const user = await client.user.findFirst();
 
-    return NextResponse.json({
-        name: user?.name,
-        email: user?.email
-    })
+//     return NextResponse.json({
+//         name: user?.name,
+//         email: user?.email
+//     })
     
-}
+// }
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
