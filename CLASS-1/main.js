@@ -84,7 +84,27 @@
 
 // const sumValue = displayResult(4 , 5, sum);
 
-const currentDate = new Date();
+// const currentDate = new Date();
 
-console.log(currentDate.getDate());
-console.log(currentDate.getFullYear());
+// console.log(currentDate.getDate());
+// console.log(currentDate.getFullYear());
+
+const fs = require('fs');
+const { resolve } = require('path');
+
+function takeWater() {
+    console.log("I'm going to take a water")
+    return new Promise ( function(resolve) {
+        console.log("I'm taking a water")
+        fs.readFile('read.txt', 'utf-8', function(noWater, water) {
+            console.log("I came back with water")
+            resolve(water)
+        })
+    })
+}
+function onDone(water) {
+    console.log(water);
+    console.log("Now I can make a sharbat.");
+}
+
+takeWater().then(onDone);
