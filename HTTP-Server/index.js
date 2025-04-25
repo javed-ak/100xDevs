@@ -42,3 +42,32 @@
 //     res.send("Totol sum of the number you given is "+ totalSum)
 // })
 // app.listen(3000)
+
+
+
+// const input = [1,2,3,4,5];
+// let output = [];
+
+// for (let i = 0; i<input.length; i ++){
+//     output.push(input[i]*2);
+// }
+// console.log(output);
+
+const input  = [1, 2, 3, 4, 5];
+
+const multiplyByTwo = (e) => {
+}
+
+const ans = input.map((e) => {
+    let multiply = e * 2;
+    return multiply;
+})
+
+const filterEven = input.filter((e) => {
+    if(e % 2 == 0) {
+        return e
+    }
+})
+
+console.log(filterEven);
+console.log(ans);
