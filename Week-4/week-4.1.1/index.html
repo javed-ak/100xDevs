@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM Manipulation</title>
-</head>
-<body>
-    <input type="text" name="" id="fNum" placeholder="First Number">
-    <input type="text" name="" id="sNum" placeholder="Second Number">
-    <button onclick=calculateSum()>Calculate Sum</button>
-    <div id="printSum"></div>
-    <script>
-        const calculateSum = async () => {
-            const a = document.getElementById("fNum").value;
-            const b = document.getElementById("sNum").value;
-            // document.getElementById("printSum").innerHTML = "Sum of the number is " + (parseInt(a) + parseInt(b));
-            const sum = await fetch("http://localhost:3000/sum-server?a="+a+"&b="+b);
-            const finalSum = await sum.text();
-            document.getElementById("printSum").innerHTML = finalSum;
-        }
-    </script>
-</body>
+<html>
+    <body>
+        <input type="number" name="Number One" id="">
+    </body>
 </html>

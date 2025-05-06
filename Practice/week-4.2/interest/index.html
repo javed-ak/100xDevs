@@ -1,0 +1,26 @@
+<body>
+    <div>
+        <input type="number" name="" id="p"><br/>
+        <input type="number" name="" id="r"><br/>
+        <input type="number" name="" id="t"><br/>
+        <button onclick="getInterest()">Calcualte Interest</button><br/>
+        <div id="result"></div>
+    </div>
+    <script>
+        const getInterest = () => {
+            let p = document.getElementsByTagName('input')[0].value;
+            let r = document.getElementsByTagName('input')[1].value;
+            let t = document.getElementsByTagName('input')[2].value;
+
+            fetch(`http://localhost:3000/interest?p=${p}&r=${r}&t=${t}`)
+            .then((response) => {
+                response.json()
+                .then((interest) => {
+                    const cal = interest
+                    document.getElementById('result').innerHTML = `Totol: ${interest.total}, Interest: ${interest.interest}`;
+                })
+            })
+        }
+
+    </script>
+</body>

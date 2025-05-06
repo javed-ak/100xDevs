@@ -1,0 +1,30 @@
+<body>
+    <div>
+        <input type="number" name="" id="num1">
+        <input type="number" name="" id="num2">
+        <button onclick="getResult()">Submit</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        // async function getResult() {
+        //     let num1 = document.getElementById('num1').value;
+        //     let num2 = document.getElementById('num2').value;
+
+        //     const sum = await fetch('http://localhost:3000/sum?num1=5&num2=10')
+        //     const result = await sum.text()
+        //     document.getElementById('result').innerHTML = result
+        // }
+        const getResult = () => {
+            let num1 = document.getElementsByTagName('input')[0].value;
+            let num2 = document.getElementsByTagName('input')[1].value;
+
+            fetch("http://localhost:3000/sum?num1="+num1+"&num2="+num2)
+            .then((response) => {
+                response.text()
+                .then((sum) => {
+                    document.getElementById('result').innerHTML = sum;
+                })
+            })
+        }
+    </script>
+</body>

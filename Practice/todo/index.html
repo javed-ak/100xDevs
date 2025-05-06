@@ -1,0 +1,14 @@
+<body>
+    <div>
+        <input type="text" name="title" id="title" placeholder="Title">
+        <input type="text" name="desc" id="desc" placeholder="Description">
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
+    <script>
+        const addTodo = () => {
+            const parent = document.createElement('div')
+            const child = document.createElement('div').innerHTML = "HEllo"
+            parent.appendChild(child)
+        }
+    </script>
+</body>
