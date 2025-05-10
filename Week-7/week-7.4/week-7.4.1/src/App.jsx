@@ -1,36 +1,34 @@
-import { RecoilRoot, useRecoilValue } from 'recoil'
-import { jobsAtom, messagingAtom, networkAtom, notificationAtom, totalNotificationSelector } from './store/atoms/atoms';
-import { useEffect } from 'react';
-
+import { RecoilRoot, useRecoilValue, useRecoilState } from 'recoil'
+import { notificationsAtom, totalNotificationCountSelector } from './store/atoms/atoms'
 
 function App() {
   return <>
   <RecoilRoot>
-    <MainApp />
+    <NotificationBar />
   </RecoilRoot>
   </>
-  
 }
 
-function MainApp() {
-  const networkNotificationCount = useRecoilValue(networkAtom);
-  const jobNotificationCount = useRecoilValue(jobsAtom);
-  const messagingNotificationCount = useRecoilValue(messagingAtom);
-  const actualNotificationCount = useRecoilValue(notificationAtom);
+export default App
 
-  const totalNotificationCount = useRecoilValue(totalNotificationSelector);
+const NotificationBar = () => {
+  // const [notificationsCount, setSotificationsCount] = useRecoilState(notificationsAtom)
+  const notificationsCount = useRecoilValue(notificationsAtom)
+  const totalNotifications = useRecoilValue(totalNotificationCountSelector);
 
   return (
-    <>
-    <button>Home</button> 
-
-    <button>My Network ({networkNotificationCount > 99 ? "99+" : networkNotificationCount})</button>
-    <button>Jobs ({jobNotificationCount > 99 ? "99+" : jobNotificationCount})</button>
-    <button>Messaging ({messagingNotificationCount > 99 ? "99+" : messagingNotificationCount})</button>
-    <button>Notification ({actualNotificationCount > 99 ? "99+" : actualNotificationCount})</button>
-
-    <button>Me ({totalNotificationCount > 499 ? "500+" : totalNotificationCount})</button>  
-    </>
+    <div>
+      <button>{ notificationsCount.network > 90 ? `Network Notification 90+` :`Network Notification ${notificationsCount.network}`}</button>
+      <button>{ notificationsCount.job > 90 ? `Job Notification 90+` :`Job Notification ${notificationsCount.job}`}</button>
+      <button>{ notificationsCount.message > 90 ? `Message Notification 90+` :`Message Notification ${notificationsCount.message}`}</button>
+      <button>{ notificationsCount.appNotification > 90 ? `Notification 90+` :`Notification ${notificationsCount.appNotification}`}</button>
+      <button>{ totalNotifications > 90 ? `Total 90+` :`Total ${totalNotifications}`}</button>
+    </div>
   )
 }
-export default App
+
+// networkNotificationCount
+// jobNotificationCount
+// messagingNotificationCount
+// actualNotificationCount
+// totalNotificationCount
