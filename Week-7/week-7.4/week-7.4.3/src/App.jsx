@@ -5,6 +5,8 @@ function App() {
   
   return <RecoilRoot>
     <Todo id={1} />
+    <Todo id={1} />
+    <Todo id={1} />x
     <Todo id={2} />
   </RecoilRoot>
 }
